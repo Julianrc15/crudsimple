@@ -2,10 +2,10 @@
 import express from 'express'
 
 //Importo los controladores
-import {Controlador} from '../controllers/Controlador.js'
+import {ControladorHabitacion} from '../controllers/ControladorHabitacion.js'
 //Creamos el objeto para poder utilizar la clase Controlador
-let controladorHabitacion= new Controlador()
-let controladorReserva= new Controlador()
+let controladorHabitacion= new ControladorHabitacion()
+// let controladorReserva= new Controlador()
 
 
 //Una variable para almacenar
@@ -20,8 +20,8 @@ rutas.post('/API/v1/viernes', controladorHabitacion.insertar)
 rutas.put('/API/v1/viernes/id', controladorHabitacion.editar)
 rutas.delete('/API/v1/viernes/id', controladorHabitacion.eliminar)
 
-rutas.get('/API/v1/viernes/reserva', controladorReserva.buscarTodos)
-rutas.get('/API/v1/viernes/reserva/:id', controladorReserva.buscarPorId)
-rutas.post('/API/v1/viernes/reserva', controladorReserva.insertar)
-rutas.put('/API/v1/viernes/reserva/id', controladorReserva.editar)
-rutas.delete('/API/v1/viernes/reserva/id', controladorReserva.eliminar)
+// rutas.get('/API/v1/viernes/reserva', controladorReserva.buscarTodos)
+// rutas.get('/API/v1/viernes/reserva/:id', controladorReserva.buscarPorId)
+// rutas.post('/API/v1/viernes/reserva', controladorReserva.insertar)
+// rutas.put('/API/v1/viernes/reserva/id', controladorReserva.editar)
+// rutas.delete('/API/v1/viernes/reserva/id', controladorReserva.eliminar)

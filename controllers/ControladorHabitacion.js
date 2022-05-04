@@ -1,7 +1,6 @@
-import {ServicioHabitacion} from "../services/ServicioHabitacion"
+import {ServicioHabitacion} from "../services/ServicioHabitacion.js"
 
-export class ControladorHabitacion{
-
+export class  ControladorHabitacion {
 
     constructor(){}
 
@@ -52,7 +51,7 @@ export class ControladorHabitacion{
         }
     }
 
-    insertar(request,response){
+    async insertar(request,response){
         let datosPeticion=request.body
         console.log(datosPeticion)
 
