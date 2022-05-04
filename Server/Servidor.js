@@ -6,14 +6,19 @@ import express from 'express'
 //Importando las RUTAS
 import {rutas} from '../routes/rutas.js'
 
+//Importar conexión 
+import {conectar} from '../database/conexion.js'
+
 //PROGRAMO LA CLASE Servidor
 export class Servidor{
 
     constructor(){
 
         this.app = express() //atributo app
+        this.conectarBD()
         this.llamarAuxiliares()
         this.enrutarPeticiones()
+        
 
     }
 
@@ -32,6 +37,12 @@ export class Servidor{
 
     llamarAuxiliares(){
         this.app.use(express.json())
+    }
+
+    conectarBD(){
+
+        conectar()
+
     }
 
 

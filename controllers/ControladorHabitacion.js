@@ -1,14 +1,17 @@
-export class Controlador{
+import {ServicioHabitacion} from "../services/ServicioHabitacion"
+
+export class ControladorHabitacion{
 
 
     constructor(){}
 
-    buscarTodos(request,response){
+    async buscarTodos(request,response){
+        let servicio =new ServicioHabitacion()//instanciar clase
         try{
 
             response.status(200).json({
                 mensaje:"Exito en la bsuqueda",
-                data:[{nombre:"Juan",edad:32},{nombre:"Maria",edad:50}],
+                data:await servicio.buscarTodos(),
                 estado:true
             })
     
@@ -23,14 +26,18 @@ export class Controlador{
         }
     }
 
-    buscarPorId(request,response){
+    async buscarPorId(request,response){
+        
         let id=request.params.id //CAPTURO EL ID QUE LLEGA POR LA URL
         console.log("El id solicitado es: "+id)
+
+        let servicio =new ServicioHabitacion()
+        
         try{
 
             response.status(200).json({
                 mensaje:"Exito en la busqueda por id: "+id,
-                data:[{nombre:"Juan",edad:32}],
+                data:await servicio.buscarPorId(),
                 estado:true
             })
     
@@ -48,8 +55,10 @@ export class Controlador{
     insertar(request,response){
         let datosPeticion=request.body
         console.log(datosPeticion)
-        try{
 
+        let servicio =new ServicioHabitacion()
+        try{
+            await servicio.registrar(datosPeticion)
             response.status(200).json({
                 mensaje:"Exito registrando datos",
                 data:datosPeticion,
@@ -67,11 +76,12 @@ export class Controlador{
         }
     }
 
-    editar(request,response){
-        let id
-        let datosPeticion
+    async editar(request,response){
+        let id=request.params.id
+        let datosPeticion=request.body.datosPeticion
+        let servicio =new ServicioHabitacion()
         try{
-
+            await servicio.editar(id,datosPeticion)
             response.status(200).json({
                 mensaje:"Exito editando datos",
                 data:null,
@@ -89,9 +99,11 @@ export class Controlador{
         }
     }
 
-    eliminar(request,response){
+    async eliminar(request,response){
+        let id=request.params.id
+        let servicio=new ServicioHabitacion()
         try{
-
+            await servicio.eliminar(id)
             response.status(200).json({
                 mensaje:"Exito eliminando datos",
                 data:null,
