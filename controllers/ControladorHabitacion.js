@@ -1,6 +1,6 @@
 import {ServicioHabitacion} from "../services/ServicioHabitacion.js"
 
-export class  ControladorHabitacion {
+export class ControladorHabitacion {
 
     constructor(){}
 
@@ -17,7 +17,7 @@ export class  ControladorHabitacion {
         }catch(error){
     
             response.status(400).json({
-                mensaje:"upss",
+                mensaje:"upss ",
                 data:[],
                 estado:false
             })
@@ -36,14 +36,14 @@ export class  ControladorHabitacion {
 
             response.status(200).json({
                 mensaje:"Exito en la busqueda por id: "+id,
-                data:await servicio.buscarPorId(),
+                data:await servicio.buscarPorId(id),
                 estado:true
             })
     
         }catch(error){
     
             response.status(400).json({
-                mensaje:"upss",
+                mensaje:"upss ",
                 data:[],
                 estado:false
             })
@@ -56,6 +56,7 @@ export class  ControladorHabitacion {
         console.log(datosPeticion)
 
         let servicio =new ServicioHabitacion()
+
         try{
             await servicio.registrar(datosPeticion)
             response.status(200).json({
@@ -77,7 +78,7 @@ export class  ControladorHabitacion {
 
     async editar(request,response){
         let id=request.params.id
-        let datosPeticion=request.body.datosPeticion
+        let datosPeticion=request.body
         let servicio =new ServicioHabitacion()
         try{
             await servicio.editar(id,datosPeticion)

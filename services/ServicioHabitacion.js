@@ -10,7 +10,7 @@ export class ServicioHabitacion{
                let habitaciones= await modeloHabitacion.find()
                return habitaciones
             }catch(error){
-                console.log("upss"+error)
+                console.log("upss "+error)
             }
 
         }
@@ -20,7 +20,7 @@ export class ServicioHabitacion{
                 let habitacion = await modeloHabitacion.findById(id)
                 return habitacion
             } catch (error) {
-                console.log("upss"+error)
+                console.log("upss "+error)
             }
         }
 
@@ -28,10 +28,10 @@ export class ServicioHabitacion{
             try {
                 
                 let habitacionaRegistrar=new modeloHabitacion(datosPeticion)
-               return( await habitacionRegistrar.save())
+               return( await habitacionaRegistrar.save())
 
             } catch (error) {
-                
+                console.log("upss "+error)
             }
         }
 
@@ -39,7 +39,7 @@ export class ServicioHabitacion{
             try {
                 return (await modeloHabitacion.findByIdAndUpdate(id,datosPeticion))
             } catch (error) {
-                console.log("upss"+error)                
+                console.log("upss "+error)                
             }
         }
 
@@ -47,7 +47,7 @@ export class ServicioHabitacion{
             try {
                 return(await modeloHabitacion.findByIdAndDelete(id))
             } catch (error) {
-                console.log("upss"+error)
+                console.log("upss "+error)
             }
         }
 

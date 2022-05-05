@@ -1,4 +1,4 @@
-import {ServicioReserva} from "../services/ServicioReserva"
+import {ServicioReserva} from "../services/ServicioReserva.js"
 
 export class ControladorReserva{
 
@@ -52,7 +52,7 @@ export class ControladorReserva{
         }
     }
 
-    insertar(request,response){
+    async insertar(request,response){
         let datosPeticion=request.body
         console.log(datosPeticion)
 
